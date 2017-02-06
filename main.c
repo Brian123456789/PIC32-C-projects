@@ -15,7 +15,7 @@
 main()
 {
 // configure all PORTA pins as output
-TRISA = 0;
+TRISA = 0;//Whenever you use a port as output, you must do this. Ports are by default set as input. All MCU's are like this.
 PORTA = 0xff;
 }
 
