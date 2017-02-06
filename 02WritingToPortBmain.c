@@ -14,7 +14,8 @@ main()
 TRISB = 0;
 AD1PCFG=0xffff; /* all PORTB as digital.PORTB shares analog and digital functionality
 and is analog by default.It is disconnected from the digital input/output. To
-get it to work you have to specify you want to use digital.*/
+get it to work you have to specify you want to use digital. Hint: if you get the Data sheet
+for the PIC32MX3xx and search for AD1PCFG you will get a clearer picture why.*/
 PORTB = 0xff;
 }
 
