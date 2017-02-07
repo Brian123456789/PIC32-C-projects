@@ -37,5 +37,6 @@ pin into a digital input.*/
 
 PORTB = 0xff;//write 1's to PORTB
 //LATB = 0xFF;  better practice to write output to LATx but the above does work now
+//Checking the contents of LATB: I think you do this by setting a watch in MPLABx on LATB.
 }
 
