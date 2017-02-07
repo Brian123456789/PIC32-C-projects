@@ -22,7 +22,7 @@ for the PIC32MX3xx and search for AD1PCFG you will get a clearer picture why.
 Rule of thumb: Always read inputs from PORTx and write outputs to LATx. If you need to read 
 what you set an output to, read LATx.
 
-This is addressed adequatly by Newnes: By default, pins multiplexed with “ analog ” inputs 
+This is addressed adequately by Newnes: By default, pins multiplexed with “ analog ” inputs 
 are disconnected from their “ digital ”
 input ports. This explains what was happening during our last attempt. All PortB pins
 of the PIC32 are, by default at power-up, assigned an analog input function; therefore,
