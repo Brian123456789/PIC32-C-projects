@@ -33,7 +33,8 @@ TRISB = 0;
 //what you set an output to, read LATx.
 
 //PORTB = 0xff;
-LATB = 0xff; //note: this still does not work unless you set it to digital.
+LATB = 0xff; //note: this still does not result in reading 0xFF from PORTB unless you set it to digital.
+//However, reading from LATB shows it is indeed set.
 }
 
 /*Result:
