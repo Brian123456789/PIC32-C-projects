@@ -43,5 +43,6 @@ LATB = 0xff; //note: this still does not work unless you set it to digital.
  * LATB  0x000000FF
  
  Reading from PORTB still gives 0 but the latch says it is set. If running this 
- * code on the Explorer 16/32, I believe the LED will light up. This will be tested later.
+ * code on the Explorer 16/32, I believe an LED connected to PORTB would 
+ * light up. This will be tested later.
   */
