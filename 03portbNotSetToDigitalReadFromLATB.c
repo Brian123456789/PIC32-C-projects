@@ -46,4 +46,9 @@ LATB = 0xff; //note: this still does not result in reading 0xFF from PORTB unles
  Reading from PORTB still gives 0 but the latch says it is set. If running this 
  * code on the Explorer 16/32, I believe an LED connected to PORTB would 
  * light up. This will be tested later.
+ Note: If you need some ports analog and some digital, you will need to set
+ * them each, some logical 1 and some logical 0 using HEX notation. E.g.
+ * AD1PCFG = 0xFFFB; // all PORTB = Digital; RB2 = analog.For more Information on 
+ * how to do this, refer to "PIC32MX family data sheet" and search AD1PCFG using 
+ * control-f (find).
   */
