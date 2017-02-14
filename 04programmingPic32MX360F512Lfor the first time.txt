@@ -1,13 +1,49 @@
-Programming The PIC32MX360F512L Using Explorer 16/32
+Programming The PIC32MX360F512L Using Explorer 
 
-Note: Your first time running, before things are set up, your programming icon will be greyed out. To get things ready for programming, do the following:
+16/32
+
+Note: Your first time running, before things are 
+
+set up, your programming icon will be greyed out. 
+
+To get things ready for programming, do the 
+
+following:
 
 1. Plug in a usb cable to J18.
-2. Right click on your project and make sure it is set as "main project"
-3. Go to file, project properties. Set Family as PIC32 bit MCU's. In the MCU device window, put your part number here, in this case PIC32MX360F512L.
-4. In the "Hardware tools" list, select PICKit3, apply, click ok.
+2. Right click on your project and make sure it is 
+
+set as "main project"
+3. Go to file, project properties. Set Family as 
+
+PIC32 bit MCU's. In the MCU device window, put your 
+
+part number here, in this case PIC32MX360F512L.
+4. In the "Hardware tools" list, select PICKit3, or 
+
+IC3 programmer (depending on which you bought) 
+
+click apply, click ok. Note: You MUST buy a 
+
+programmer to use with the PIC32MX chip. PKOB does 
+
+not work with this chip. If you use PICKit3 you 
+
+won't be able to see your PORTA LED's light up 
+
+because it shares them as input ports. Only Use 
+
+PIKKit3 if you want to use boundry scanning. 
+
+PikKit2 does not work with this chip. Anything that 
+
+is not green in the selection window does not work 
+
+with Explorer16/32.
 5. Click "Build main Project" icon (a hammer)
-6.Click "Make and program device main project" (an arrow into a chip icon)
+6.Click "Make and program device main project" (an 
+
+arrow into a chip icon)
 
 
 
