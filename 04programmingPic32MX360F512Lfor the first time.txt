@@ -10,10 +10,12 @@ To get things ready for programming, do the
 
 following:
 
-1. Plug in a usb cable to J18.
-2. Right click on your project and make sure it is 
+1. Plug in a programmer to J1.
 
-set as "main project"
+2. Right click on your project and make sure it is
+set as "main project". Plug in power supply (DON'T 
+power the board through J18 via USB)
+
 3. Go to file, project properties. Set Family as 
 
 PIC32 bit MCU's. In the MCU device window, put your 
