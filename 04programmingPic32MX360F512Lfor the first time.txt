@@ -27,13 +27,7 @@ click apply, click ok. Note: You MUST buy a
 
 programmer to use with the PIC32MX chip. PKOB does 
 
-not work with this chip. If you use PICKit3 you 
-
-won't be able to see your PORTA LED's light up 
-
-because it shares them as input ports. Only Use 
-
-PIKKit3 if you want to use boundry scanning. 
+not work with this chip.  
 
 PikKit2 does not work with this chip. Anything that 
 
