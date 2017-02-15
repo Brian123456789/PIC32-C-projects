@@ -17,28 +17,21 @@ set as "main project". Plug in power supply (DON'T
 power the board through J18 via USB)
 
 3. Go to file, project properties. Set Family as 
-
 PIC32 bit MCU's. In the MCU device window, put your 
-
 part number here, in this case PIC32MX360F512L.
+
 4. In the "Hardware tools" list, select PICKit3, or 
-
 IC3 programmer (depending on which you bought) 
-
 click apply, click ok. Note: You MUST buy a 
-
 programmer to use with the PIC32MX chip. PKOB does 
-
 not work with this chip.  
-
 PikKit2 does not work with this chip. Anything that 
-
 is not green in the selection window does not work 
-
 with Explorer16/32.
-5. Click "Build main Project" icon (a hammer)
-6.Click "Make and program device main project" (an 
 
+5. Click "Build main Project" icon (a hammer)
+
+6.Click "Make and program device main project" (an 
 arrow into a chip icon)
 
 
