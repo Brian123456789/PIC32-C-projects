@@ -2,37 +2,68 @@ Programming The PIC32MX360F512L Using Explorer
 
 16/32
 
-Note: Your first time running, before things are 
+Your Explorer 16/32 has an on-board programmer, so 
+you don't have to buy one if your chip is 
+supported, great! However, Microchip left out a lot 
+of chips so that the user has to 
+jump through some pretty strange hurdles to get it 
+to work.
+ 
+Fire up your MPLABX, and click on your main 
+project. Just once: this is a bug and you have to 
+do it for the next part to work (nice, huh?). Go to 
+file, project properties, (it's not greyed out 
+now... see what just happened?) and look in the 
+Hardware Tool window. You should see in the Starter 
+Kit folder a green dot next to PKOB. No? Well it 
+seems some applications engineer was too lazy to 
+add it. Or maybe he forgot. Or maybe he didn't care 
+and you should be smart enough to do it yourself. 
+It's amazing that they didn't seem to think it was 
+important to add the chip that a major book was 
+published with! Here's how you add it yourself and 
+avoid silly things like buying a $47 picKit3 when 
+you don't need it, or spending hours searching 
+forums and learning how to properly edit .jar files 
+and avoiding file permission conflicts etc. etc.
 
-set up, your programming icon will be greyed out. 
-
-To get things ready for programming, do the 
-
-following:
-
-1. Plug in a programmer to J1.
-
-2. Right click on your project and make sure it is
-set as "main project". Plug in power supply (DON'T 
-power the board through J18 via USB)
-
-3. Go to file, project properties. Set Family as 
-PIC32 bit MCU's. In the MCU device window, put your 
-part number here, in this case PIC32MX360F512L.
-
-4. In the "Hardware tools" list, select PICKit3, or 
-IC3 programmer (depending on which you bought) 
-click apply, click ok. Note: You MUST buy a 
-programmer to use with the PIC32MX chip. PKOB does 
-not work with this chip.  
-PikKit2 does not work with this chip. Anything that 
-is not green in the selection window does not work 
-with Explorer16/32.
-
-5. Click "Build main Project" icon (a hammer)
-
-6.Click "Make and program device main project" (an 
-arrow into a chip icon)
+Adding your PICMX360F512L to MPLABX so pkob works:
+1. E.g., Go to C:\Program Files (x86)\Microchip\MPLABX 
+\v3.40\mplab_ide\mdbcore\modules and first create a 
+new folder. Copy the file com-microchip-mplab- 
+mdbcore-pkobskde.jar and put it in the folder you 
+created. I mean come on, this location is obvious, 
+right? Somewhat sarcastic? Yeah.
+ 
+2. Copy com-microchip-mplab-mdbcore-pkobskde.jar to 
+your desktop.
+ 
+3. Rename ONLY the file extension to .zip.
+ 
+4. Click on zip file and navigate the com folder to 
+the end where you find the file 
+pkobskde.platformtool.xml, save this file to the 
+desktop.
+ 
+5. Edit this file with notepad or notepad++. Add 
+your chip name to the list. Save and copy back to 
+the zip folder it came from, (in the RIGHT 
+location) and replace the file.
+ 
+6. Now rename your .zip file back to .jar. It 
+should read com-microchip-mplab-mdbcore- 
+pkobskde.zip. See? Simple. Now take this lovely 
+little jewel and copy/replace it back to C:\Program 
+Files (x86)\Microchip\MPLABX\v3.40\mplab_ide 
+\mdbcore\modules.
+ 
+7. Lastly, you have to reset the cache... Oh of 
+course! Open up MPLAB, go to help, and about. It 
+will be right there snug as a bug. Or just go to 
+your own personal version of my example, C:\Users 
+\brian\AppData\Local\mplab_ide\Cache\dev\v3.40 and 
+delete the var folder. Now fire up MPLABX and 
+celebrate.
 
 
 
