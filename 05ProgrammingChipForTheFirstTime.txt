@@ -2,7 +2,8 @@ Loading chip with first program:
 
 Below is the code we need to make Port A LED's turn on solid green.
 
-On the top icon menu click on the "Make and Program Device" icon, it looks like a page of code with an arrow pointing down into a chip.
+On the top icon menu click on the "Make and Program Device" icon, it looks like a 
+page of code with an arrow pointing down into a chip.
 
 Ensure this code is in your main.c file in your project's source file folder:
 
