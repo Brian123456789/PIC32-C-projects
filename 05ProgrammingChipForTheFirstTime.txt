@@ -1,0 +1,125 @@
+Loading chip with first program:
+
+Below is the code we need to make Port A LED's turn on solid green.
+
+On the top icon menu click on the "Make and Program Device" icon, it looks like a page of code with an arrow pointing down into a chip.
+
+Ensure this code is in your main.c file in your project's source file folder:
+
+Note: This is just the code from the last lessons with all the comments removed.
+
+
+
+#include <p32xxxx.h>
+
+main()
+{
+
+TRISA = 0;
+//PORTA = 0xff;
+LATA = 0xFF;
+
+
+TRISB = 0;
+//AD1PCFG=0xffff; //set output to digital
+
+
+//PORTB = 0xff;
+
+LATB = 0xff; 
+}
+
+After programming succeded, notice D5,D6,D9, D10 are solid green. Yet we wrote 1's (0xFF) to all of PortA, what gives?
+Notice this issue did not show up in our watch window!
+
+Port pins not illuminated: D3,D4,D7,D8.
+On the PIC32MX Family Data sheet, page 29 we find PortA:
+
+RA0 ?  17 I/O ST 
+RA1 ?  38 I/O ST
+RA2 ?  58 I/O ST
+RA3 ?  59 I/O ST
+RA4 ?  60 I/O ST
+RA5 ?  61 I/O ST
+RA6 ?  91 I/O ST
+RA7 ?  92 I/O ST
+
+
+Take RA0 and find pin 17 on the schematic. It is connected to D3. Aha, this is your first PortA pin!
+
+To save time:
+
+RA0 ?  17 connected to D3 * Multiplexed with JTAG, see below.
+RA1 ?  38 connected to D4 * Mux w/JTAG
+RA2 ?  58 connected to D5
+RA3 ?  59 connected to D6
+RA4 ?  60 connected to D7 * Mux w/JTAG
+RA5 ?  61 connected to D8 * Mux w/JTAG
+RA6 ?  91 connected to D9
+RA7 ?  92 connected to D10
+
+
+Searching with cntrl-F we find on the data sheet page 325: (That's the sheet page, not actual page) 
+
+JTAG program/debug port is multiplexed
+with PORTA pins RA0, RA1, RA4 and RA5
+on 100-pin devices; PORTB pins RB10,
+RB11, RB12 and RB13 on 64-pin devices.
+At power-on-reset, these pins are controlled
+by the JTAG port. To use these pins as general
+purpose I/O pins, the user?s application
+code must clear JTAGEN (DDPCON<3>) bit
+= 0. To maintain these pins for JTAG program/
+debug, the user?s application code
+must maintain JTAGEN bit = 1.
+
+So in order to try to get all of our LED's to illuminate, we need to turn off JTAG. FUN!
+
+Nothing is ever as simple as it seems programming microcontrollers. 
+
+Lucio Di Jassio comments on this in his book:
+
+"If you intend to test the code developed so far on the Explorer 16 board using the
+MPLAB REAL ICE or the MPLAB ICD2 in circuit debuggers, you will have to
+remember to disable the JTAG port to gain access to all the pins of PortA and therefore
+all the LEDs. Here is all it takes:
+
+// disable the JTAG port
+DDPCONbits.JTAGEN = 0;
+
+If you intend to test the code on the Explorer 16 board using the PIC32 Starter Kit and
+a 100-pin PIM adapter, you must not disable the JTAG port. You will still have control
+on the remaining pins of PortA: RA2 , RA3 , RA6 , and RA7 ."
+
+So we are using the Explorer 16/32, NOT the Explorer 16, and this uses PKOB to program,
+not the PIC32 starter kit, which would use the JTAG port. The programmers REAL ICE and
+ICD2 are spendy items and we won't be using those either since we have PKOB. All we have
+to do is add the above code to disable the JTAG port. 
+
+Now we add this to our code and do another "Make and Program Device"
+
+#include <p32xxxx.h>
+
+main()
+{
+
+DDPCONbits.JTAGEN = 0;//Disable JTAG
+
+TRISA = 0;
+//PORTA = 0xff;
+LATA = 0xFF;
+
+
+TRISB = 0;
+//AD1PCFG=0xffff; //set output to digital
+
+
+//PORTB = 0xff;
+
+LATB = 0xff; 
+}
+
+Ok, now that's done, the result is all LED's are now solid green!! To recap, the problem was that JTAG was 
+multiplexed (shared) with our output pins, similar to the stiuation we had with PortB and the watch window
+earlier. Since we disabled JTAG, we are now good to go! (Unless you used a programmer connected to the
+JTAG port, JTAG is often used as a port to program devices).
