@@ -124,3 +124,5 @@ Ok, now that's done, the result is all LED's are now solid green!! To recap, the
 multiplexed (shared) with our output pins, similar to the stiuation we had with PortB and the watch window
 earlier. Since we disabled JTAG, we are now good to go! (Unless you used a programmer connected to the
 JTAG port, JTAG is often used as a port to program devices).
+
+So we have programmed PortB as well, since in our program we also wrote to the latch of port b. We have mixed results: RB0-RB5, (there are no LED's so the voltage levels must be read with a volt meter) were all 3.2V. All of the rest were 0v, which is an interesting aside, but the main goal at this point was to write to PORTA, which caused all the LED's to light.
