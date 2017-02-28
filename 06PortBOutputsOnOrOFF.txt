@@ -1,0 +1,30 @@
+Most embedded programs run in a loop. They run over and over in that loop until you turn off the device or tell it to stop. Some programs on the computer go step by step until the program  finishes, and then returns control to the operating system of your computer, but this would be pretty useless for an microcontroller, as most of them have no operating system. 
+
+A very common loop to use is the While loop. It looks like:
+
+while (x)
+{
+	//your code here
+}
+
+The letter (x) is called a parameter. As long as this parameter is true, your code is going to run in between the curly brackets, which are containers that contain the code and allow it to only run between those points. It will not run outside of them until it exits the while loop.
+
+In c, 1 is considered true and 0 is considered false. However, positive or negative numbers are also considered true. 478 = true. -9864 = true. 
+
+If you make code that says: 
+
+while (0)
+
+{
+	//your code here
+}
+
+This program will never run!
+
+
+
+
+
+
+
+
