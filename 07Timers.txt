@@ -55,7 +55,7 @@ your first time seeing Binary, take about an hour and google "how convert binary
 google "How to convert binary to Hexidecimal".
 
 
-The only functions we are using in the timer are Bit 15, (T)ON,  TCKPS (bit 4 and 5), and that's it. Putting that into 16 bit
+The only functions we are using in the timer are Bit 15, (T)ON,  TCKPS (bit 4 and 5), and that's it. Putting that into hex
 form yields 0x8030. Whereas 0x denotes Hex notation.
 
 So to manipulate or set these settings in the Timer, notice we do not write TMR1=0x8030! Instead, we use the T1CON register for
