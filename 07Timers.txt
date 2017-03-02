@@ -20,7 +20,7 @@ To configure the timer, we find the name and meaning of the registers and use th
 [1] [0] [0] [0]  [0] [0] [0] [0]  [0] [0] [1] [1]  [0] [0] [0] [0]   <--- Register cells
 
 1000 hex=     1000 hex=     1000 hex=     1000 hex=
-     8                  0                   3                    0
+     8           0             3             0
 
 Some people are a little confused converting binary into hex, and the grouping is a little strange. They are all grouped in 4's
 
