@@ -1,0 +1,69 @@
+Timer1
+
+Your timer is basically a counter that regulates the speed at which 1's and 0's appear on your output. It has many features and is in a 16 bit register. 
+
+Registers are like little containers or boxes in which you put 1's or 0's. Whether you put a 1 or 0 in any specific container, or register, it will change the way your timer operates. The document on Timers, which is quite long, is located here: 
+
+http://ww1.microchip.com/downloads/en/DeviceDoc/61105F.pdf 
+
+At some point, the more you know about these things the better, but for starting, just stick to the basics and work your way up.
+
+When using the timer in your code, it's a good idea to clear it: 
+
+TMR1 = 0;
+
+To configure the timer, we find the name and meaning of the registers and use the functions we want.
+
+15 14 13 12   11 10  9   8     7  6    5   4    3   2   1  0     <--- Bit Location in cells
+[1] [0] [0] [0]  [0] [0] [0] [0]  [0] [0] [1] [1]  [0] [0] [0] [0]   <--- Register cells
+
+1000 hex=     1000 hex=     1000 hex=     1000 hex=
+     8                  0                   3                    0
+
+Some people are a little confused converting binary into hex, and the grouping is a little strange. They are all grouped in 4's
+
+[1] [1] [1] [1] in Hex is F 
+   
+[0] [0] [0] [0] in Hex is 0
+
+
+ 8   4   2   1
+[1] [1] [1] [1]  is F because hex works like this:
+
+
+0 = 0
+1 = 1
+2 = 2
+3 = 3
+4 = 4
+5 = 5
+6 = 6
+7 = 7
+8 = 8
+9 = 9
+A = 10
+B = 11
+C = 12
+D = 13
+E = 14
+F = 15
+ 
+Treat the group of 4 as binary. Add them together and you have a totoal of 15. Go to the Hexidecimal chart, and 15 = F. If it's your first time seeing Binary, take about an hour and google "how convert binary to decimal". And if you need more Hex examples, google "How to convert binary to Hexidecimal".
+
+The only functions we are using in the timer are Bit 15, (T)ON,  TCKPS (bit 4 and 5), and that's it. Putting that into 16 bit form yields 0x8030. Whereas 0x denotes Hex notation.
+
+So to manipulate or set these settings in the Timer, notice we do not write TMR1=0x8030! Instead, we use the T1CON register for this (details in the document referenced above)
+
+T1CON = 0x8030
+
+We have 3 signals that control Timer1. TMR1 has a 16 bit counter value, T1CON controls activation and operating mode, and PR1 produces a periodic timer reset.
+
+
+
+
+
+
+
+     
+
+
