@@ -57,7 +57,8 @@ google "How to convert binary to Hexidecimal".
 
 
 The only functions we are using in the timer are Bit 15, (T)ON,  TCKPS (bit 4 and 5), and that's it. Putting that into hex
-form yields 0x8030. Whereas 0x denotes Hex notation.
+form yields 0x8030. Whereas 0x denotes Hex notation. Again to recap, we are using these functions (T)ON, TCKPS, by setting bit
+locations in the 16 bit register of T1CON.
 
 So to manipulate or set these settings in the Timer, notice we do not write TMR1=0x8030! Instead, we use the T1CON register for
 this (details in the document referenced above)
