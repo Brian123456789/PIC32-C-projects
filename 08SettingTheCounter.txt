@@ -1,0 +1,91 @@
+How to set the DELAY constant.
+
+
+//loops
+#include <p32xxxx.h>
+#define DELAY 36000 // 256 ms
+main()
+{
+// 1. Set prescale, porta is output, period register set to maximum (not used)
+//DDPCONbits.JTAGEN = 0; // disable JTAG, only needed if not using explorer 16/32
+ 
+TRISA = 0xff00; // set PORTA to output
+T1CON = 0x8030; // TMR1 on, prescale 1:256 PB=36 MHz
+PR1 = 0xFFFF; // set period register to max
+
+// 2. main loop
+while( 1)
+{
+//1.1 turn all LED ON
+PORTA = 0xff;
+TMR1 = 0;
+while ( TMR1 < DELAY)
+{
+// waits while TMR1's value is less than DELAY
+}
+// 3. turn off all LED's
+PORTA = 0;
+TMR1 = 0;
+while ( TMR1 < DELAY)
+{
+// waits while TMR1's value is less than DELAY
+}
+} // main loop
+} // main
+
+
+DELAY is a constant, it is defined using #define, located under your PIC32xxx include file. The DELAY is a constant that works together with the prescaler and the peripheral bus clock frequency. The calculation looks like this:
+ 
+TDELAY - 256 ms
+Fpb - 36 MHZ
+
+T DELAY = Fpb * 256 * DELAY. Transposing this to find delay we get:
+
+
+DELAY = (36 * 256) / 256ms =  36000. This value we now write as we see in the code above: #define DELAY 36000.   
+
+(note: ms is *10E-3) if this is confusing google "scientific 
+notation".
+
+
+DELAY as you can see above in the while loop, is something we created, as it is used in the while loop and essentially slows things down until the timer reaches a value that is equal to or greater than DELAY. The While loop runs while the timer value is less than delay. 
+
+TMR1 starts at 0 and each time the while loop is run through, it increases value. The PIC32MX has five timer peripherals. timers work by counting from ‘0’ to a certain value and then resets and repeats. As you can see, the counter will have to count 36000 times before the while loop returns false and is exited!
+
+Fpb above is the peripheral bus frequency, 36MHZ. 
+
+256 is the prescaler maximum value, a prescaler works like a divider that reduces frequency. DELAY is a constant value you set that helps determine speed of the clock signalon the output by reducing, or delaying it, this being accomplished by the while loop.
+
+
+
+
+
+
+Extra info on timers:
+
+
+Timer SFRs
+
+
+There are three main timer special function registers: TMRx, TxCON, and PRx.
+
+
+TMRx
+
+TMRx just refers to the timer you are using. TMR1, TMR2, etc. We have 5 on the pic32. You can read from it or write to it. When we set it to 0, we are writing 0 to it. It is called a peripheral because it is independent of the main processor clock. It can count no matter what the CPU is doing, and will not take away power from it.
+
+TxCON
+
+TxCON is the timer control register. It controls the activation and functionality of the timer. The following bits are relevant to all five timers and used in most applications. We use T1CON in this lesson. Each timer has its own TxCON.
+
+ON bit: enables or disables the timer. We set this in the earlier lesson to on.
+Prescaler bits: the timer frequency equals the input clock frequency divided by the prescaler. Possible prescalers are 1:1, 1:8, 1:64, and 1:256 for Timer1 and all powers of 2 up to 256 (excluding 128) for timers 2-5. The prescaler is set by 00, 01, 10, 11 which give 1,8,64,256.
+
+Timer clock source bit. The source can be a clock on an external pin (TxCK) or the peripheral bus clock, which would be the same as SYSCLK unless instructed otherwise.
+
+T1CON = 0x8030;    // Turn on Timer1, prescaler is 256, source is peripheral bus clock
+PRx. (In this case we used PR1)
+
+PRx is the timer period register. It is the maximum value the timer will count to before reseting back to ‘0’. You can read and write to this as well.
+
+
