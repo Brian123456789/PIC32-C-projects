@@ -6,7 +6,8 @@ is in a 16 bit register.
 Registers are like little containers or boxes in which you put 1's or 0's. Whether you put a 1 or 0 in any specific container,
 or register, it will change the way your timer operates. The document on Timers, which is quite long, is located here: 
 
-http://ww1.microchip.com/downloads/en/DeviceDoc/61105F.pdf 
+http://ww1.microchip.com/downloads/en/DeviceDoc/61105F.pdf (Just in case this link goes dead, Pic 32 Family Reference Manual, 
+Chapter 14.)
 
 At some point, the more you know about these things the better, but for starting, just stick to the basics and work your way up.
 
