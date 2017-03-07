@@ -34,7 +34,8 @@ while ( TMR1 < DELAY)
 } // main
 
 
-DELAY is a constant, it is defined using #define, located under your PIC32xxx include file. The DELAY is a constant that works together with the prescaler and the peripheral bus clock frequency. The calculation looks like this:
+DELAY is a constant, it is defined using #define, located under your PIC32xxx include file. The DELAY is a constant that works
+together with the prescaler and the peripheral bus clock frequency. The calculation looks like this:
  
 TDELAY - 256 ms
 Fpb - 36 MHZ
@@ -48,13 +49,19 @@ DELAY = (36 * 256) / 256ms =  36000. This value we now write as we see in the co
 notation".
 
 
-DELAY as you can see above in the while loop, is something we created, as it is used in the while loop and essentially slows things down until the timer reaches a value that is equal to or greater than DELAY. The While loop runs while the timer value is less than delay. 
+DELAY as you can see above in the while loop, is something we created, as it is used in the while loop and essentially slows
+things down until the timer reaches a value that is equal to or greater than DELAY. The While loop runs while the timer value is
+less than delay. 
 
-TMR1 starts at 0 and each time the while loop is run through, it increases value. The PIC32MX has five timer peripherals. timers work by counting from ‘0’ to a certain value and then resets and repeats. As you can see, the counter will have to count 36000 times before the while loop returns false and is exited!
+TMR1 starts at 0 and each time the while loop is run through, it increases value. The PIC32MX has five timer peripherals. timers
+work by counting from â€˜0â€™ to a certain value and then resets and repeats. As you can see, the counter will have to count 36000
+times before the while loop returns false and is exited!
 
 Fpb above is the peripheral bus frequency, 36MHZ. 
 
-256 is the prescaler maximum value, a prescaler works like a divider that reduces frequency. DELAY is a constant value you set that helps determine speed of the clock signalon the output by reducing, or delaying it, this being accomplished by the while loop.
+256 is the prescaler maximum value, a prescaler works like a divider that reduces frequency. DELAY is a constant value you set
+that helps determine speed of the clock signalon the output by reducing, or delaying it, this being accomplished by the while
+loop.
 
 
 
@@ -86,6 +93,6 @@ Timer clock source bit. The source can be a clock on an external pin (TxCK) or t
 T1CON = 0x8030;    // Turn on Timer1, prescaler is 256, source is peripheral bus clock
 PRx. (In this case we used PR1)
 
-PRx is the timer period register. It is the maximum value the timer will count to before reseting back to ‘0’. You can read and write to this as well.
+PRx is the timer period register. It is the maximum value the timer will count to before reseting back to â€˜0â€™. You can read and write to this as well.
 
 
