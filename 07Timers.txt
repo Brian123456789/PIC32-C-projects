@@ -56,9 +56,33 @@ your first time seeing Binary, take about an hour and google "how convert binary
 google "How to convert binary to Hexidecimal".
 
 
-The only functions we are using in the timer are Bit 15, (T)ON,  TCKPS (bit 4 and 5), and that's it. Putting that into hex
-form yields 0x8030. Whereas 0x denotes Hex notation. Again to recap, we are using these functions (T)ON, TCKPS, by setting bit
-locations in the 16 bit register of T1CON.
+The only functions we are using in the timer are Bit 15, (T)ON (turns timer on,  
+TCKPS (bit 4 and 5), (Timer clock prescale, divides by the value you set it to, in our case 256) 
+MCU clock is equal to the timer frequency (Fpb). Bit 1, TCS = 0
+
+and that's it. Putting that into hexform yields 0x8030. 
+
+Heres a more complete list of things in the register:
+
+Bit 0 = not used
+Bit 1 = TCS
+Bit 2 = TSYNC
+Bit 3 = not used
+bit 4-5 = TCKPS
+bit 6 = not used
+bit 7 = TGATE
+bit 8 = not used 
+bit 9 = not used
+bit 10= not used
+bit 11= TMWIP
+bit 12= TMWIS
+bit 13= SIDL
+bit 14= FRZ
+bit 15= TON
+
+Whereas 0x denotes Hex notation. Again to recap, we are using these functions (T)ON, TCKPS, and TCS by setting bit
+locations in the 16 bit register of T1CON. Note that putting a Zero in TCS actually does something, 0 does not nece3ssarily mean
+do nothing!
 
 So to manipulate or set these settings in the Timer, notice we do not write TMR1=0x8030! Instead, we use the T1CON register for
 this (details in the document referenced above)
