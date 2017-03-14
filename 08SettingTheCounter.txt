@@ -106,6 +106,25 @@ T1CON = 0x8030;    // Turn on Timer1, prescaler is 256, source is peripheral bus
 PRx. (In this case we used PR1)
 
 PRx is the timer period register. It is the maximum value the timer will count to before reseting back to ‘0’. You can read and
-write to this as well. It produces a periodic reset of the timer, and we are not using it here.
+write to this as well. It produces a periodic reset of the timer, and we are not using it here. When we set ot to 0xFFFF we Load
+PR1 register with desired 16-bit match value.
+
+John Loomis summed this up well:
+
+"The following steps should be performed to properly configure the Timer1 peripheral for Timer mode operation.
+
+Clear ON control bit (T1CON[15]) = 0 to disable timer.
+Configure TCKPS control bits (T1CON[5:4]) to select desired timer clock prescale.
+Set TCS control bit (T1CON[1]) = 0 to select the internal PBCLK clock source.
+Clear TMR1 register.
+Load PR1 register with desired 16-bit match value.
+Set ON control bit = 1 to enable Timer.
+
+Here is the essential code to initialize and start timer1, using a prescale of 1:256.
+
+T1CON = 0x30 // Stop and Init Timer (with prescale 1:256)
+TMR1 = 0x0; // Clear timer register
+PR1 = 0xFFFF; // Load period register
+T1CONSET = 0x8000;// Start Timer"
 
 
