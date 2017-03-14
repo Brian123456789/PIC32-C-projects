@@ -1,4 +1,6 @@
-How to set the DELAY constant.
+//How to set the DELAY constant.
+
+//This code should cause PORTA led's to blink on and off.
 
 
 //loops
@@ -34,16 +36,19 @@ while ( TMR1 < DELAY)
 } // main
 
 
-DELAY is a constant, it is defined using #define, located under your PIC32xxx include file. The DELAY is a constant that works
-together with the prescaler and the peripheral bus clock frequency. The calculation looks like this:
+DELAY is a constant, it is defined using #define, located under your PIC32xxx include file. The DELAY is a constant we are
+writing that works together with the prescaler and the peripheral bus clock frequency. The calculation for the loop's TOTAL
+delay time looks like this:
  
-TDELAY - 256 ms
-Fpb - 36 MHZ
+TDELAY = 256 ms
+Fpb = 36MHZ (This is Frequency Peripheral Bus) Value in scientific notation: 36*10E3 or 36000
+256 is the prescaler value (do not confuse this value with 256ms, which is 256*10E-3)
 
-T DELAY = Fpb * 256 * DELAY. Transposing this to find delay we get:
+
+T DELAY = Fpb * 256 * DELAY. Transposing this to find our DELAY constant we get:
 
 
-DELAY = (36 * 256) / 256ms =  36000. This value we now write as we see in the code above: #define DELAY 36000.   
+DELAY = (36MHZ * 256ms) / 256ms =  36000. This value we now write as we see in the code above: #define DELAY 36000.   
 
 (note: ms is *10E-3) if this is confusing google "scientific 
 notation".
