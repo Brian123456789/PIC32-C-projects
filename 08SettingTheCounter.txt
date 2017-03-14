@@ -106,6 +106,6 @@ T1CON = 0x8030;    // Turn on Timer1, prescaler is 256, source is peripheral bus
 PRx. (In this case we used PR1)
 
 PRx is the timer period register. It is the maximum value the timer will count to before reseting back to ‘0’. You can read and
-write to this as well.
+write to this as well. It produces a periodic reset of the timer, and we are not using it here.
 
 
